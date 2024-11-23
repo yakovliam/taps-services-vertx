@@ -1,7 +1,0 @@
-{
-  "url": "jdbc:postgresql://localhost:5432/postgres",
-  "driver_class": "org.postgresql.Driver",
-  "max_pool_size": 4,
-  "user": "postgres",
-  "password": "password"
-}
