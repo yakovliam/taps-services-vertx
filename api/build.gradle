@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+
+}
+
+group = 'com.yakovliam.taps'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // logging
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    implementation 'org.slf4j:slf4j-api:2.0.16'
+
+    // jackson
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.1'
+
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'org.jpmml:pmml-evaluator-metro:1.6.4'
+    implementation 'com.auth0:java-jwt:4.4.0'
+    implementation 'org.locationtech.jts:jts-core:1.20.0'
+
+    // hibernate
+    // https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core
+    implementation("org.hibernate.orm:hibernate-core:6.6.2.Final")
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    from sourceSets.main.resources
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+}

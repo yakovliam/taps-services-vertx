@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_4" version="4.4.1">
+    <Header copyright="Copyright (c) 2021 Software AG" description="Default description">
+        <Application name="Nyoka" version="5.5.0"/>
+        <Timestamp>2024-03-11 01:47:36.177261</Timestamp>
+    </Header>
+    <DataDictionary numberOfFields="2">
+        <DataField name="SCORE" optype="continuous" dataType="double"/>
+        <DataField name="SECONDS" optype="continuous" dataType="double"/>
+    </DataDictionary>
+    <TransformationDictionary>
+        <DerivedField name="poly1-x0" optype="continuous" dataType="double">
+            <Apply function="product">
+                <Apply function="pow">
+                    <FieldRef field="SCORE"/>
+                    <Constant dataType="integer">0</Constant>
+                </Apply>
+            </Apply>
+        </DerivedField>
+        <DerivedField name="poly1-x1" optype="continuous" dataType="double">
+            <Apply function="product">
+                <Apply function="pow">
+                    <FieldRef field="SCORE"/>
+                    <Constant dataType="integer">1</Constant>
+                </Apply>
+            </Apply>
+        </DerivedField>
+        <DerivedField name="poly1-x2" optype="continuous" dataType="double">
+            <Apply function="product">
+                <Apply function="pow">
+                    <FieldRef field="SCORE"/>
+                    <Constant dataType="integer">2</Constant>
+                </Apply>
+            </Apply>
+        </DerivedField>
+        <DerivedField name="poly1-x3" optype="continuous" dataType="double">
+            <Apply function="product">
+                <Apply function="pow">
+                    <FieldRef field="SCORE"/>
+                    <Constant dataType="integer">3</Constant>
+                </Apply>
+            </Apply>
+        </DerivedField>
+    </TransformationDictionary>
+    <RegressionModel modelName="LinearRegression" functionName="regression">
+        <MiningSchema>
+            <MiningField name="SCORE" usageType="active" optype="continuous"/>
+            <MiningField name="SECONDS" usageType="target" optype="continuous"/>
+        </MiningSchema>
+        <Output>
+            <OutputField name="predicted_SECONDS" optype="continuous" dataType="double" feature="predictedValue"/>
+        </Output>
+        <RegressionTable intercept="6.6551990027232932">
+            <NumericPredictor name="poly1-x0" exponent="1" coefficient="0.0000000000000000"/>
+            <NumericPredictor name="poly1-x1" exponent="1" coefficient="0.0803760717845439"/>
+            <NumericPredictor name="poly1-x2" exponent="1" coefficient="-0.0000007745694911"/>
+            <NumericPredictor name="poly1-x3" exponent="1" coefficient="0.0000000000035453"/>
+        </RegressionTable>
+    </RegressionModel>
+</PMML>
