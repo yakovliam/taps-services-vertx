@@ -1,7 +1,9 @@
 package com.yakovliam.taps.api.network;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.yakovliam.taps.api.model.JsonSerializableObject;
+import com.yakovliam.taps.api.model.internal.GameConfigType;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -17,6 +19,12 @@ public class NetworkClient {
   private static final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(NetworkClient.class);
 
   private static final ObjectMapper MAPPER = new ObjectMapper();
+
+  static {
+    // register deserializers
+    MAPPER.registerModule(new SimpleModule().addDeserializer(GameConfigType.class,
+        new GameConfigType.Deserializer()));
+  }
 
   private static final OkHttpClient CLIENT =
       new OkHttpClient().newBuilder().followRedirects(false).followSslRedirects(false).proxy(null)

@@ -1,8 +1,5 @@
 package com.yakovliam.taps;
 
-import com.yakovliam.taps.api.model.App;
-import com.yakovliam.taps.api.model.AppRepository;
-import com.yakovliam.taps.api.model.IdentityCreator;
 import com.yakovliam.taps.api.orchestrator.EarnUSDJobGoal;
 import com.yakovliam.taps.api.orchestrator.Job;
 import com.yakovliam.taps.api.orchestrator.JobOrchestrator;
@@ -21,7 +18,11 @@ public class OrchestratorVerticle extends AbstractVerticle {
     JobOrchestrator jobOrchestrator = new JobOrchestrator();
 
     Job<EarnUSDJobGoal> earnUSDJob = new Job<>(new EarnUSDJobGoal(100.00));
-    vertx.executeBlocking(() -> jobOrchestrator.orchestrate(earnUSDJob));
+    new Thread(() -> {
+      jobOrchestrator.orchestrate(earnUSDJob).thenAccept(report -> {
+        LOGGER.info("Job completed: {}", report.getGoal().getName());
+      });
+    }).start();
 
     startPromise.complete();
   }

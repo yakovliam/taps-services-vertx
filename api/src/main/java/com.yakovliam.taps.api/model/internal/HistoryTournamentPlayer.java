@@ -29,7 +29,6 @@ public class HistoryTournamentPlayer extends JsonSerializableObject {
   @JsonProperty("canCancel")
   private boolean canCancel;
 
-
   @JsonProperty("isCancelled")
   private boolean isCancelled;
 

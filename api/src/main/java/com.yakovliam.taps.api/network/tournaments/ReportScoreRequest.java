@@ -24,8 +24,8 @@ public class ReportScoreRequest extends TriumphRequest {
    *
    * @param body the body
    */
-  protected ReportScoreRequest(String gameId, ReportScoreRequestBody body, Device device,
-                               Identity identity) {
+  public ReportScoreRequest(String gameId, ReportScoreRequestBody body, Device device,
+                            Identity identity) {
     super(RequestMethod.POST, "tournaments/async_group/v3/report_score", body, device);
     this.gameId = gameId;
     this.identity = identity;
