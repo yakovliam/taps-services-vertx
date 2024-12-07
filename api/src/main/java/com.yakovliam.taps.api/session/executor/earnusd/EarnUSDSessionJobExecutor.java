@@ -45,7 +45,8 @@ public class EarnUSDSessionJobExecutor extends SessionJobExecutor<EarnUSDSession
     }
 
     // create game session auth state manager
-    GameSessionAuthStateManager gameSessionAuthStateManager = new GameSessionAuthStateManager(randomIdentity);
+    GameSessionAuthStateManager gameSessionAuthStateManager =
+        new GameSessionAuthStateManager(randomIdentity);
     // start
     gameSessionAuthStateManager.start();
 
@@ -63,7 +64,6 @@ public class EarnUSDSessionJobExecutor extends SessionJobExecutor<EarnUSDSession
     // TODO implement job execution logic here
 
     //////////////////////////
-
     // logic loop
     while (true) {
       // check the gem & USD balance of the identity

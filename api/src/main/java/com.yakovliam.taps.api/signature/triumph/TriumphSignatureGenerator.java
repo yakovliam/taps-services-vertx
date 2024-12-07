@@ -71,11 +71,8 @@ public class TriumphSignatureGenerator
 
     // replace the second character of the joiner with the highest alphabetical character
     joiner[1] = highestAlphabeticalChar;
-    String joinerString = new String(joiner);
 
-    LOGGER.info("Generated joiner: {}", joinerString);
-
-    return joinerString;
+    return new String(joiner);
   }
 
   private static TriumphSignatureGenerator instance;

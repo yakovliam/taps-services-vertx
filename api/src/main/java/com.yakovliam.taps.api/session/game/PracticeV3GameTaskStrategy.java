@@ -40,7 +40,7 @@ public class PracticeV3GameTaskStrategy implements GameTaskStrategy {
     StandardPMMLGamePlayer gamePlayer = new StandardPMMLGamePlayer(player);
 
     // TODO implement an algorithm to determine the best possible final score
-    GamePrediction prediction = gamePlayer.play(1000);
+    GamePrediction prediction = gamePlayer.play(140);
     boolean predictionIsValid = GamePredictionChecker.isGamePredictionValid(prediction);
 
     if (!predictionIsValid) {
@@ -94,12 +94,7 @@ public class PracticeV3GameTaskStrategy implements GameTaskStrategy {
     JsonSerializableObject resp =
         NetworkClient.getInstance().send(sendableRequest, JsonSerializableObject.class).join();
 
-    try {
-      LOGGER.info("Final Sc. Response: {}", DEBUG_MAPPER.writeValueAsString(resp));
-    } catch (JsonProcessingException e) {
-      throw new RuntimeException(e);
-    }
-
+    LOGGER.info("Final Sc. Response: {}", resp.writeDynamicValues());
     return new GameTaskResult();
   }
 
@@ -133,10 +128,6 @@ public class PracticeV3GameTaskStrategy implements GameTaskStrategy {
     JsonSerializableObject resp =
         NetworkClient.getInstance().send(sendableRequest, JsonSerializableObject.class).join();
 
-    try {
-      LOGGER.info("Int. Sc. Response: {}", DEBUG_MAPPER.writeValueAsString(resp));
-    } catch (JsonProcessingException e) {
-      throw new RuntimeException(e);
-    }
+    LOGGER.info("Int. Sc. Response: {}", resp.writeDynamicValues());
   }
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1733603354769-1" author="jacobcohen (generated)">
+        <update tableName="app">
+            <column name="app_version" value="2.16.8"/>
+            <column name="sdk_version" value="2.16.8-triumph"/>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>

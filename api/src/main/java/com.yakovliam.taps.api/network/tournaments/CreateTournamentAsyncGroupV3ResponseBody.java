@@ -3,6 +3,7 @@ package com.yakovliam.taps.api.network.tournaments;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.yakovliam.taps.api.model.JsonSerializableObject;
 import com.yakovliam.taps.api.model.internal.TournamentDefinition;
+import com.yakovliam.taps.api.model.internal.TournamentV3;
 
 public class CreateTournamentAsyncGroupV3ResponseBody extends JsonSerializableObject {
 
@@ -13,7 +14,7 @@ public class CreateTournamentAsyncGroupV3ResponseBody extends JsonSerializableOb
   private String tournamentId;
 
   @JsonProperty("tournament")
-  private TournamentDefinition tournament;
+  private TournamentV3 tournament;
 
   public CreateTournamentAsyncGroupV3ResponseBody() {
   }
@@ -26,7 +27,7 @@ public class CreateTournamentAsyncGroupV3ResponseBody extends JsonSerializableOb
     return tournamentId;
   }
 
-  public TournamentDefinition getTournament() {
+  public TournamentV3 getTournament() {
     return tournament;
   }
 }
